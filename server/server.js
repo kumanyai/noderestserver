@@ -1,9 +1,7 @@
 require('./config/config');
 
 const express = require('express');
-
 const mongoose = require('mongoose');
-
 const app = express();
 const bodyParser = require('body-parser');
 
@@ -13,45 +11,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+//Configuracion Global de RUTAS - Maneja todas las rutas de los documentos
+app.use(require('./routes/index'));
 
-app.use(require('./routes/usuario'));
-
+//Conexion a la Base de datos. process.env.URLDB es una variable que esta en el carhicov config
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err, res) => {
     if(err) throw err;
-
     console.log('Base de datos ONLINE');
 });
-//
 
-app.get('/usuario', function (req, res) {
-    res.json('Get Usuario')
-});
-
-app.post('/usuario', function (req, res) {
-    let body = req.body;
-    if (body.nombre === undefined){
-        res.status(400).json({
-            ok: false,
-            mensaje: "El nombre es necesario"
-        });
-    }else{
-        res.json({
-            persona: body
-        });
-    }
-});
-
-app.put('/usuario/:id', function (req, res) {
-    let id = req.params.id;
-    res.json({
-        id
-    })
-});
-
-app.delete('/usuario', function (req, res) {
-    res.json('Delete Usuario')
-});
-
+//Escuchando el puerto que definimos en el archivo configs
 app.listen(process.env.PORT, () => {
     console.log('Escuchando Puerto: ',process.env.PORT);
 });
