@@ -4,7 +4,6 @@ const _ = require('underscore');
 const Usuario = require('../models/usuario');
 const app = express();
 
-
 app.get('/usuario', function (req, res) {
     // res.json('Get Usuario')
 
