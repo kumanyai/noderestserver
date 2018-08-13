@@ -11,12 +11,20 @@ process.env.PORT = process.env.PORT || 3000;
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 //=================
-//ENTORNO
+//VENCIMIENTO DEL TOKEN
 //=================
+//60 Segundos
+//60 Minutos
+//24 Horas
+//30 Dias
+
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 
 //=================
-//ENTORNO
+//SEED
 //=================
+process.env.SEED =  process.env.SEED || 'token-desarrollo';
+
 
 //=================
 //BASE DE DATOS
@@ -34,3 +42,8 @@ process.env.URLDB = urlDB;
 
 process.env.PORT = process.env.PORT || 3000;
 
+//========================
+// GOOGLE CLIENT ID
+//========================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '834599352485-sjnumo33rf5ofs9tlrj941kf4sgkfg37.apps.googleusercontent.com';

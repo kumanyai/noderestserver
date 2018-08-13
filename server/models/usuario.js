@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 let rolesValidos = {
-    values: ['ADMIN_ROLE','USER_ROLE'],
+    values: ['USER_ROLE', 'ADMIN_ROLE'],
     message: '{VALUE} NO ES UN ROL VALIDO'
 };
 
@@ -40,7 +40,7 @@ let usuarioSchema = new Schema({
         default:false
     }
 });
-//ELIMINAR LA CONTRASEÑA DEL JSON(NO SE MOSTRARA PERO SE GUARDARA EN LA BD)
+//EXCLUIR LA CONTRASEÑA DEL JSON(NO SE MOSTRARA PERO SE GUARDARA EN LA BD)
 usuarioSchema.methods.toJSON = function() {
   let user = this;
   userObject = user.toObject();
