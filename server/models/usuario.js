@@ -1,14 +1,15 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+const mongoose = require('mongoose'); //IMPORTAMOS el paquete de Mongoosse
+const uniqueValidator = require('mongoose-unique-validator'); //IMPORTAMOS el paquete de uniqueValidator
 
+//DEFINIMOS LOS ROLES VALIDOS PARA EL CAMPO 'ROLE'
 let rolesValidos = {
     values: ['USER_ROLE', 'ADMIN_ROLE'],
     message: '{VALUE} NO ES UN ROL VALIDO'
 };
 
-let Schema = mongoose.Schema;
+let Schema = mongoose.Schema; // IMPORTAMOS LA CLASE ESQUEMA A UNA VARIABLE
 
-let usuarioSchema = new Schema({
+let usuarioSchema = new Schema({ //HACEMOS UNA INSTANACIA DE SCHEMA PARA DECLARAR NUESTROS ESQUEMAS EN USUARIOSCHEMA
     nombre:{
        type: String,
        required: [true, 'El nombre es obligatorio']
@@ -48,8 +49,10 @@ usuarioSchema.methods.toJSON = function() {
   return userObject;
 };
 
+//AGREGAMOS LAS RESTRICCIONES UNICAS A NUESTRO ESQUEMA PARA NO PERMITIR ITEM'S DUPLICADOS
 usuarioSchema.plugin(uniqueValidator,{
     message:'{PATH} debe ser unico'
 });
 
+//EXPORTAMOS EL NUESTRO ESQUEMA
 module.exports = mongoose.model('Usuario',usuarioSchema);
