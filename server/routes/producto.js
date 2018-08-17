@@ -80,9 +80,9 @@ app.get('/producto/:id', (req,res) => {
 
 });
 
-//============================
+//=================
 // BUSCAR PRODUCTOS
-//============================
+//=================
 
 app.get('/producto/buscar/:termino', verificaToken,(req, res) => { //Ppnemos "Buscar" para no confundirla con la que pide el ID y necesitamos el "Termina" de lo que se desea buscar
 
@@ -107,9 +107,9 @@ app.get('/producto/buscar/:termino', verificaToken,(req, res) => { //Ppnemos "Bu
         });
 });
 
-//============================
+//========================
 // Crear un nuevo producto
-//============================
+//========================
 
 app.post('/producto/', verificaToken, (req,res) => {
     //Grabar el usuario
@@ -143,9 +143,9 @@ app.post('/producto/', verificaToken, (req,res) => {
 
 });
 
-//============================
+//=======================
 // Actualizar el producto
-//============================
+//=======================
 
 app.put('/producto/:id', verificaToken, (req,res) => {
     //Actualizar productos
@@ -195,9 +195,9 @@ app.put('/producto/:id', verificaToken, (req,res) => {
     })
 });
 
-//============================
+//===================
 // Borrar un producto
-//============================
+//===================
 
 app.delete('/producto/:id', verificaToken, (req,res) => {
     //Grabar el usuario
